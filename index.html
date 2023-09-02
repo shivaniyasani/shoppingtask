@@ -1,0 +1,52 @@
+
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Shopping Website</title>
+   
+</head>
+<body>
+    <h1>Products</h1>
+    <div id="product-list">
+        <!-- Product listing -->
+        <div class="product">
+            <h2>Product 1</h2>
+            <p>Price: $10</p>
+            <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>Product 2</h2>
+            <p>Price: $15</p>
+            <button onclick="addToCart('Product 2', 15)">Add to Cart</button>
+        </div>
+    </div>
+
+    <h1>Shopping Cart</h1>
+    <div id="cart">
+        <!-- Cart items will be displayed here -->
+    </div>
+
+    <h2>Total: $<span id="total">0</span></h2>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            total += price;
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartHTML = '';
+            for (let item of cart) {
+                cartHTML += `<div>${item.name} - $${item.price}</div>`;
+            }
+            document.getElementById('cart').innerHTML = cartHTML;
+            document.getElementById('total').textContent = total;
+        }
+    </script>
+</body>
+</html>
